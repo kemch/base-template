@@ -1,0 +1,47 @@
+// ==========================
+// Anchor Tags / Hover
+// ==========================
+
+@mixin a($link:blue, $hover:blue, $underline:true, $bordered:false) {
+
+	&:link      {color:$link; text-decoration: none;}
+	&:visited   {color:$link;}
+	&:hover     {color:$hover;}
+	&:active    {color:$hover;}
+	@if $bordered == true {
+		border-bottom: 1px dotted $link;
+		&:hover {
+			border-bottom-color: $hover;
+		}
+	} @elseif $bordered == false {
+		border-bottom: 0;
+	}
+
+	@if $underline == true {
+			text-decoration: underline;
+	}
+}
+
+// ==========================
+// IE Gradient
+// ==========================
+
+@mixin gradient-ie($start, $end) {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start', endColorstr='$end');
+}
+
+// ==========================
+// Clear
+// ==========================
+
+@mixin clear {
+	&:after, &:before {
+			content:"";
+			line-height: 0;
+			display: table;
+	}
+
+	&:after {
+			clear: both;
+	}
+}
